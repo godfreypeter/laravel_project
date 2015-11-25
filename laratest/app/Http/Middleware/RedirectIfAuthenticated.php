@@ -1,10 +1,7 @@
 <?php
-
 namespace App\Http\Middleware;
-
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
-
 class RedirectIfAuthenticated
 {
     /**
@@ -13,7 +10,6 @@ class RedirectIfAuthenticated
      * @var Guard
      */
     protected $auth;
-
     /**
      * Create a new filter instance.
      *
@@ -24,7 +20,6 @@ class RedirectIfAuthenticated
     {
         $this->auth = $auth;
     }
-
     /**
      * Handle an incoming request.
      *
@@ -35,9 +30,8 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next)
     {
         if ($this->auth->check()) {
-            return redirect('/home');
+            return redirect('/');
         }
-
         return $next($request);
     }
 }
