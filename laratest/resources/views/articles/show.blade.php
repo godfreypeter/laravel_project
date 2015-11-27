@@ -2,11 +2,13 @@
 
 
 @section('content')
-
 	<h1>{{$article->title}}</h1>
+	@if($log==true && $user==$article->user_id)
+		<h5 style="text-align:right; margin-top:-24px;"><a href="{{ url('/articles/'.$article->id.'/edit') }}" class="btn-link">Edit this article</a></h5>
+	@endif
 	<hr>
-		<article>
-			{{ $article->body }}
+		<article style="text-align:justify">
+			{{{ $article->body }}}
 		</article>
 
 	@unless($article->tags->isEmpty())

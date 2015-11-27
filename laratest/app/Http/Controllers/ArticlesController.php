@@ -27,25 +27,24 @@ class ArticlesController extends Controller
 	{
 		$articles = Articles::latest("published_at")->published()->get();
 
-		$latest = Auth::user()->name;
-		return view('articles.index', compact('articles', 'latest'));
+		return view('articles.index', compact('articles'));
 	}
 
 
 
 	public function show(Articles $article)
 	{
-		$latest = Auth::user()->name;
-		return view('articles.show', compact('article', 'latest'));
+		
+		return view('articles.show', compact('article'));
 	}
 
 
 
 	public function create()
 	{
-		$latest = Auth::user()->name;
+		
 		$tags = Tag::lists('name', 'id');
-		return view('articles.create', compact('tags', 'latest'));
+		return view('articles.create', compact('tags'));
 	}
 
 
@@ -64,9 +63,9 @@ class ArticlesController extends Controller
 
 	public function edit(Articles $article)
 	{
-		$latest = Auth::user()->name;
+		
 		$tags = Tag::lists('name', 'id');
-		return view('articles.edit', compact('article', 'tags', 'latest'));
+		return view('articles.edit', compact('article', 'tags'));
 	}
 
 

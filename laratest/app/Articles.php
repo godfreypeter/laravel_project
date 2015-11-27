@@ -13,7 +13,7 @@ class Articles extends Model
     	'published_at',
         'user_id' // TEMOPORARY........
     ];
-
+    protected $dates = ['published_at'];
     public function scopePublished($query)
     {
     	$query->where('published_at', '<=', Carbon::now());
@@ -27,6 +27,11 @@ class Articles extends Model
     public function setPublishedAtAttribute($date)
     {
     	$this->attributes['published_at'] = Carbon::parse($date);
+    }
+
+    public function getPublishedAtAttribute($date)
+    {
+        return new Carbon($date);
     }
 
     public function user()
@@ -43,4 +48,5 @@ class Articles extends Model
     {
         return $this->tags->lists('id')->all();
     }
+
 }

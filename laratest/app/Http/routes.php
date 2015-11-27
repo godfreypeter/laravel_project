@@ -33,11 +33,6 @@ Route::get('articles/{id}/edit', 'ArticlesController@edit');
 
 
 Route::controllers([
-		'auth' => 'Auth\AuthController',
-		'password' => 'Auth\PasswordController',
-	]);
-
-Route::get('foo', ['middleware'=>'manager', function()
-{
-	return 'this page may only be viewed by managers.';
-}]);
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+]);
