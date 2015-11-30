@@ -10,8 +10,7 @@ class Articles extends Model
     protected $fillable = [
     	'title',
     	'body',
-    	'published_at',
-        'user_id' // TEMOPORARY........
+    	'published_at'
     ];
     protected $dates = ['published_at'];
     public function scopePublished($query)

@@ -8,16 +8,24 @@
 	@endif
 	<hr>
 		<article style="text-align:justify">
-			{{{ $article->body }}}
+			{{ $article->body }}
 		</article>
 
+
+
 	@unless($article->tags->isEmpty())
-	<h5>Tags :</h5>
-	<ul>
+
+	<br>
+	<strong>Tags : &nbsp;</strong>
+	<span>
 		@foreach($article->tags as $tag)
-			<li>{{ $tag->name }}</li>
+			@if($article->tags->last()!=$tag)
+				<a href="{!! URL::to('/tags/'.$tag->name) !!}">{{ $tag->name }}</a>, 
+			@else
+				<a href="{!! URL::to('/tags/'.$tag->name) !!}">{{ $tag->name}}</a>
+			@endif
 		@endforeach
-	</ul>
+	</span>
 	@endunless
 
 @stop

@@ -12,6 +12,8 @@ use Illuminate\HttpResponse;
 use App\Http\Controllers\Controller;
 use Request;
 use App\Tag;
+use App\ArticleTag;
+use DB;
 
 class ArticlesController extends Controller
 {
@@ -34,8 +36,24 @@ class ArticlesController extends Controller
 
 	public function show(Articles $article)
 	{
-		
 		return view('articles.show', compact('article'));
+	}
+
+
+
+	public function tag($tags)
+	{
+		$tag_id=Tag::getTagId($tags);
+		$tagarticle = ArticleTag::getTagedArticle($tag_id);
+		foreach($tagarticle as $article_id)
+		{
+			$articles[] = DB::table('articles')->where('id', $article_id->article_id)->get();
+		}
+		for ($i = 0, $c = count($articles); $i < $c; ++$i) {
+		    $articles[$i] = (array) $articles[$i];
+		}
+		return view('articles.tag', compact('articles'));
+		//return $articles;
 	}
 
 

@@ -20,6 +20,7 @@ Route::get('home', 'HomeController@index');
 Route::get('about', 'PagesController@about');
 Route::get('contact', 'PagesController@contact');
 Route::resource('articles', 'ArticlesController');
+Route::get('tags/{tags}', 'ArticlesController@tag');
 
 /*
 Route::get('articles', 'ArticlesController@index');
