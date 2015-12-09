@@ -1,6 +1,6 @@
 /vendor
 /node_modules
-laratest/gulpfile.js
+/laratest/gulpfile.js
 Homestead.yaml
 Homestead.json
 .env
