@@ -18,5 +18,5 @@ elixir(function(mix) {
     	'libs/jquery.js',
     	'libs/select2.min.js',
     	'libs/bootstrap.min.js'
-    	]);
+    	]);sdsdfsdfsdfsdf
 });
